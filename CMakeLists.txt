@@ -221,7 +221,7 @@ add_custom_command(
 		${PROJECT_NAME}
 	POST_BUILD
 		COMMAND 
-			powershell -NoProfile -ExecutionPolicy Bypass -File "${CMAKE_CURRENT_SOURCE_DIR}/!Update.ps1" "COPY" "${PROJECT_VERSION}" "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/$(ConfigurationName)" "${PROJECT_NAME}" "${ANNIVERSARY_EDITION}"
+			powershell -NoProfile -ExecutionPolicy Bypass -File "${CMAKE_CURRENT_SOURCE_DIR}/!Update.ps1" "COPY" "${PROJECT_VERSION}" "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/$$(ConfigurationName)" "${PROJECT_NAME}" "${ANNIVERSARY_EDITION}"
 		COMMENT 
 			"Updating project :))"
 )
@@ -231,7 +231,7 @@ add_custom_command(
 		${PROJECT_NAME} 
 	POST_BUILD
 		COMMAND 
-			${CMAKE_COMMAND} -E copy_directory "${CMAKE_CURRENT_SOURCE_DIR}/test/configs" "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/$(ConfigurationName)"
+			${CMAKE_COMMAND} -E copy_directory "${CMAKE_CURRENT_SOURCE_DIR}/test/configs" "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/$$(ConfigurationName)"
 )
 endif()
 
