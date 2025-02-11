@@ -38,7 +38,7 @@
 
 // fixme: decouple PROJECT_NAME requirement
 #if !defined(PROJECT_NAME)
-#	define PROJECT_NAME Plugin::NAME.data()
+#	define PROJECT_NAME SKSE::PluginDeclaration::GetSingleton()->GetName().data()
 #endif
 
 #if defined(DKU_CONSOLE)
@@ -156,7 +156,7 @@ namespace DKUtil::Logger
 		inline void report_error(bool a_fatal, std::string_view a_fmt)  // noexcept
 		{
 			if (a_fatal) {
-				::MessageBoxA(nullptr, a_fmt.data(), Plugin::NAME.data(), MB_OK | MB_ICONSTOP);
+				::MessageBoxA(nullptr, a_fmt.data(), PROJECT_NAME, MB_OK | MB_ICONSTOP);
 			} else {
 				auto result = ::MessageBoxA(nullptr, a_fmt.data(), PROJECT_NAME, MB_YESNO | MB_ICONEXCLAMATION);
 				if (result != IDYES) {
